@@ -2,17 +2,20 @@
 Author: Zhenbo Xu
 Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
 """
+import sys
+sys.path.append('/home/hilmy/PointTrack/')
+sys.path.insert(0, '..')
 import os
 import cv2
 import numpy as np
 import PIL.Image as Image
-from file_utils import *
 import multiprocessing
 from config import *
+from file_utils import *
 
 
-SEQ_IDS_TRAIN = ["%04d" % idx for idx in [0, 1, 3, 4, 5, 9, 11, 12, 15, 17, 19, 20]]
-SEQ_IDS_VAL = ["%04d" % idx for idx in [2, 6, 7, 8, 10, 13, 14, 16, 18]]
+SEQ_IDS_TRAIN = ["%04d" % idx for idx in [0, 1, 3, 4, 5]]
+SEQ_IDS_VAL = ["%04d" % idx for idx in [6, 7]]
 
 
 def getImgLabel(img_path, label_path):

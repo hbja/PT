@@ -56,8 +56,9 @@ if os.path.exists(args['checkpoint_path']):
     model.load_state_dict(state['model_state_dict'], strict=True)
     print('Load dict from %s' % args['checkpoint_path'])
 else:
-    assert(False, 'checkpoint_path {} does not exist!'.format(args['checkpoint_path']))
     print(args['checkpoint_path'])
+    assert False, 'checkpoint_path {} does not exist!'.format(args['checkpoint_path'])
+
 
 model.eval()
 
@@ -110,5 +111,5 @@ if 'run_eval' in args.keys() and args['run_eval']:
     save_val_dir = args['save_dir'].split('/')[1]
     p = subprocess.run([pythonPath, "-u", "eval.py",
                         os.path.join(rootDir, save_val_dir), kittiRoot + "instances", "val.seqmap"],
-                                   stdout=subprocess.PIPE, cwd=rootDir + "datasets/mots_tools/mots_eval")
+                                   stdout=subprocess.PIPE, cwd=rootDir + "/datasets/mots_tools/mots_eval")
     print(p.stdout.decode("utf-8"))
